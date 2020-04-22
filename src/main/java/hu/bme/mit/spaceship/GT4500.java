@@ -83,6 +83,7 @@ public class GT4500 implements SpaceShip {
           wasPrimaryFiredLast = true;
         }
         if (! secondaryTorpedoStore.isEmpty()) {
+          // generating merge conflict
           boolean firingSecondarySuccess = false;
           firingSecondarySuccess = secondaryTorpedoStore.fire(1);
           // if primary firing was successful than we don't want to
