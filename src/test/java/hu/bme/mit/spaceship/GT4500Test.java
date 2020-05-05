@@ -119,4 +119,21 @@ public class GT4500Test {
     verify(mockSecondary, times(0)).fire(1);
   }
 
+  @Test
+  public void fireTorpedo_All_then_Single_LastFiringTorpedoStore(){
+    // Arrange
+    when(mockPrimary.fire(1)).thenReturn(true);
+    when(mockSecondary.fire(1)).thenReturn(true);
+    // Act
+    boolean result = ship.fireTorpedo(FiringMode.ALL);
+    boolean result2 = ship.fireTorpedo(FiringMode.SINGLE);
+
+    // Assert
+    assertEquals(true, result);
+    assertEquals(true, result2);
+
+    verify(mockPrimary, times(2)).fire(1);
+    verify(mockSecondary, times(1)).fire(1);
+  }
+
 }
